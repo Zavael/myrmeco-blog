@@ -1,0 +1,27 @@
+{
+  "name": "myrmecoblog",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zavael/myrmecoblog.git"
+  },
+  "author": "Zavael",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zavael/myrmecoblog/issues"
+  },
+  "homepage": "https://github.com/Zavael/myrmecoblog#readme",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mustache-express": "^1.3.0",
+    "pg-promise": "^10.3.5"
+  }
+}
