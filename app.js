@@ -5,6 +5,10 @@ var cookieParser = require('cookie-parser');
 const port = process.env.PORT || 3000;
 var routes = require('./routes');
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 var app = express();
 
 // view engine setup
@@ -45,4 +49,4 @@ app.use(function(err, req, res, next) {
 //   res.status(404).send({ error: 'Not found' });
 // });
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => console.log(`Listening on port ${port} in ${process.env.NODE_ENV} mode`));

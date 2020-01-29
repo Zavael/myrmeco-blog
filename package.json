@@ -4,7 +4,8 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "set NODE_ENV=production && node app.js",
+    "debug": "set NODE_ENV=development && node app.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
