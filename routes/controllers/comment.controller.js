@@ -14,19 +14,26 @@ module.exports = {
             });
     },
     readAllForPost: function (req, res, next) {
-        log.log('read comment');
-        db.comments.all(req.params.postId)
-            .then(data => {
-                // if (!data) {
-                //     next();
-                //     return;
-                // }
-                log.log('returning', data);
-                res.send(data);
+        log.log('read comments for post', req.params);
+        db.posts.one(req.params.postId)
+            .then(post => {
+                if (!post) {
+                    next();
+                    return;
+                }
+                db.comments.allForPost(req.params.postId)
+                    .then(comments => {
+                        if (!comments) {
+                            next();
+                            return;
+                        }
+                        log.log('returning', comments);
+                        res.send(comments);
+                    })
+                    .catch((error) => {
+                        log.error(error);
+                        next(error);
+                    });
             })
-            .catch((error) => {
-                log.error(error);
-                next(error);
-            });
     }
 }

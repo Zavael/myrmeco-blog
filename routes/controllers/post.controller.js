@@ -14,8 +14,8 @@ module.exports = {
             });
     },
     read: function (req, res, next) {
-        log.log('read post');
-        db.posts.one(req.params.id)
+        log.log('read post', req.params);
+        db.posts.one(req.params.postId)
             .then(post => {
                 if (!post) {
                     next();
@@ -30,7 +30,7 @@ module.exports = {
             });
     },
     readAll: function (req, res, next) {
-        log.log('getting posts');
+        log.log('read all posts');
         db.posts.all()
             .then((data) => {
                 log.log('returning', data);

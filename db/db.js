@@ -1,8 +1,8 @@
 const pgp = require('pg-promise')();
-const db = pgp(process.env.DATABASE_URL || "postgres://zuvdpkwkwrdtks:b36e1b01e9f72e81de1c7ec294c0eaa13bf1ce534f647818e83b6423c7dbf230@ec2-79-125-25-171.eu-west-1.compute.amazonaws.com:5432/debfsm9i9rn7hn");
+const db = pgp(process.env.DATABASE_URL || "postgres://zuvdpkwkwrdtks:b36e1b01e9f72e81de1c7ec294c0eaa13bf1ce534f647818e83b6423c7dbf230@ec2-79-125-25-171.eu-west-1.compute.amazonaws.com:5432/debfsm9i9rn7hn?ssl=true");
 const log = require('../logging.handler')('PostgresDB');
 
-db.proc('version')
+db.one('Select version()')
     .then(data => {
         log.log('Connected: ', data);
     })

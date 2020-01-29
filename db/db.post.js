@@ -10,6 +10,10 @@ module.exports = function (db, log) {
             //     text: 'INSERT INTO post(login, password) VALUES($1,$2)',
             //     values: [post.login, post.password]
             // });
+        },
+        all: () => {
+            log.log('read all posts');
+            return db.any('SELECT * FROM posts');
         }
     };
 }
